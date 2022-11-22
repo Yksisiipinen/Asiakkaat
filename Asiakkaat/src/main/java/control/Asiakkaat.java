@@ -29,9 +29,9 @@ public class Asiakkaat extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Asiakkaat.doGet()");
 		String hakusana = request.getParameter("hakusana");
-		Dao dao = new Dao();
-		ArrayList<Asiakas> asiakkaat;
 		String strJSON="";
+		Dao dao = new Dao();
+		ArrayList<Asiakas> asiakkaat = dao.getAllItems();
 		if (hakusana!=null) {
 			if (!hakusana.equals("")) {
 				asiakkaat = dao.getAllItems(hakusana);

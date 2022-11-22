@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="scripts/main.js"></script>
+<link rel="stylesheet" type="text/css" href="css/tyylit.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
 		<tr>
 			<th>Hakusana:</th>
 			<th colspan = "3"><input type = "text" id = "hakusana"></th>
-			<th><input type = "button" value = "Hae" id = "hakunappi" onclick = "haeAsiakkaat()"></th>
+			<th><input type = "button" value = "hae" id = "hakunappi" onclick = "haeAsiakkaat()"></th>
 		</tr>		
 		<tr>
 			<th>Etunimi</th>
