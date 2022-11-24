@@ -2,7 +2,7 @@
 table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;  
-  width: 50%;
+  width: 70%;
 }
 
 table td, table th {
@@ -22,15 +22,19 @@ table th {
   color: white;
 }
 
+#linkki {
+	color: white;
+	text-decoration: none;
+}
+
 .poista{
-	color: red;
+	color: rgb(255, 69, 6);
 	text-decoration: underline;
 	cursor: pointer;	
 }
 
 .oikealle{
 	text-align: right;	
-	
 }
 
 #uusiAsiakas, #takaisin{
