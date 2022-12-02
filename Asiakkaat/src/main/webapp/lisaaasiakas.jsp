@@ -8,7 +8,7 @@
 <script src="scripts/main.js"></script>
 <title>Asiakkaan lisäys</title>
 </head>
-<body>
+<body onload="asetaFocus('etunimi')" onkeydown="tutkiKey(event, 'lisaa')">
 	<form name="lomake">
 		<table>
 			<thead>

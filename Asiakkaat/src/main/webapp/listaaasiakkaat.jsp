@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/tyylit.css">
 <title>Asiakkaiden listaus</title>
 </head>
-<body>
+<body onload = "asetaFocus('hakusana')" onkeydown="tutkiKey(event, 'listaa')">
 	<table id="listaus">
 		<thead>
 			<tr>
