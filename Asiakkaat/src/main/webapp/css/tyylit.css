@@ -2,7 +2,7 @@
 table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;  
-  width: 50%;
+  width: 70%;
 }
 
 table td, table th {
@@ -22,13 +22,8 @@ table th {
   color: white;
 }
 
-#linkki {
-	color: white;
-	text-decoration: none;
-}
-
 .poista{
-	color: rgb(255, 69, 6);
+	color: red;
 	text-decoration: underline;
 	cursor: pointer;	
 }
@@ -41,3 +36,23 @@ table th {
 	color: white;	
 	cursor: pointer;	
 }
+
+#linkki{
+	color: white;	
+	text-decoration: none;
+}
+#loginDiv{
+	position: absolute;
+	border: 1px solid;
+	padding: 20px;
+	border-radius: 10px;
+	left: 35%;
+	top: 10%;
+	background-color: white;
+}
+label {
+	display: block;
+	width: 5em;
+	float: left;
+}
+

@@ -146,7 +146,7 @@ function haeAsiakas() {
 	//console.log(url);
     let requestOptions = {
         method: "GET",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" }       
+        headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" }       
     };    
     fetch(url, requestOptions)
     .then(response => response.json())
@@ -157,11 +157,11 @@ function haeAsiakas() {
    		document.getElementById("puhelin").value=response.puhelin;
    		document.getElementById("sposti").value=response.sposti;
    	}) 
-   //	.catch(errorText => console.error("Fetch failed: " + errorText));
+	.catch(errorText => console.error("Fetch failed: " + errorText));
 }
 
 function paivitaTiedot(){	
-	let formData = serialize_form(lomake);
+	let formData = serialize_form(document.lomake);
 	let url = "asiakkaat";    
     let requestOptions = {
         method: "PUT",

@@ -12,6 +12,7 @@
 	<table id="listaus">
 		<thead>
 			<tr>
+				<th><a id="linkki" href="login?logout=1">Kirjaudu ulos (<%out.print(session.getAttribute("kayttaja"));%>)</a></th>
 				<th colspan="5" class ="oikealle"><a id="linkki" href = "lisaaasiakas.jsp">Lisää asiakas</a>
 			</tr>
 			<tr>

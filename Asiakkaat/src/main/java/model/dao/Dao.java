@@ -19,14 +19,15 @@ public class Dao {
 	private Connection yhdista() {
 		Connection con = null;
 		String path = System.getProperty("catalina.base");
-		path = path.substring(0, path.indexOf(".metadata")).replace("\\", "/");
+		//path = path.substring(0, path.indexOf(".metadata")).replace("\\", "/");
+		path += "/webapps/";
 		String url = "jdbc:sqlite:" + path + db;
 		try {
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection(url);
 			System.out.println("Yhteys avattu.");
 		} catch (Exception e) {
-			System.out.println("Yhteyden avaus ep�onnistui.");
+			System.out.println("Yhteyden avaus epäonnistui.");
 			e.printStackTrace();
 		}
 		return con;
@@ -156,29 +157,29 @@ public class Dao {
 
 	public Asiakas getItem(int id) {
 		Asiakas asiakas = null;
-		sql = "SELECT * FROM asiakkaat WHERE asiakas_id=?";
+		sql = "SELECT * FROM asiakkaat WHERE asiakas_id=?";       
 		try {
-			con = yhdista();
-			if (con!=null) {
-				stmtPrep = con.prepareStatement(sql);
+			con=yhdista();
+			if(con!=null){ 
+				stmtPrep = con.prepareStatement(sql); 
 				stmtPrep.setInt(1, id);
-				rs = stmtPrep.executeQuery();
-				if(rs.isBeforeFirst()) {
-					rs.next();
-					asiakas = new Asiakas();
+        		rs = stmtPrep.executeQuery();  
+        		if(rs.isBeforeFirst()){
+        			rs.next();
+        			asiakas = new Asiakas();
 					asiakas.setAsiakas_id(rs.getInt(1));
 					asiakas.setEtunimi(rs.getString(2));
 					asiakas.setSukunimi(rs.getString(3));
 					asiakas.setPuhelin(rs.getString(4));
-					asiakas.setSposti(rs.getString(5));
-				}
-			}
+					asiakas.setSposti(rs.getString(5));    			      			
+				}        		
+			}			 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			sulje();
-		}return asiakas;
-		
+		}		
+		return asiakas;		
 	}
 
 	public boolean changeItem(Asiakas asiakas){
@@ -202,4 +203,45 @@ public class Dao {
 		return paluuArvo;
 	}
 	
+	public boolean removeAllItems(String pwd){
+		boolean paluuArvo=true;
+		if(!pwd.equals("Nimda")) { 
+			return false;
+		}
+		sql="DELETE FROM Asiakkaat";						  
+		try {
+			con = yhdista();
+			stmtPrep=con.prepareStatement(sql); 			
+			stmtPrep.executeUpdate();	        
+		} catch (Exception e) {				
+			e.printStackTrace();
+			paluuArvo=false;
+		} finally {
+			sulje();
+		}				
+		return paluuArvo;
+	}
+
+	public String findUser(String uid, String pwd) {
+		String nimi = null;
+		sql="SELECT * FROM asiakkaat WHERE sposti=? AND salasana=?";						  
+		try {
+			con = yhdista();
+			if(con!=null){ 
+				stmtPrep = con.prepareStatement(sql); 
+				stmtPrep.setString(1, uid);
+				stmtPrep.setString(2, pwd);
+        		rs = stmtPrep.executeQuery();  
+        		if(rs.isBeforeFirst()){
+        			rs.next();
+        			nimi = rs.getString("etunimi")+ " " +rs.getString("sukunimi");     			      			
+				}        		
+			}			        
+		} catch (Exception e) {				
+			e.printStackTrace();			
+		} finally {
+			sulje();
+		}				
+		return nimi;
+	}
 }
